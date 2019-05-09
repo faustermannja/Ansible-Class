@@ -1,0 +1,23 @@
+---
+- name:
+  hosts: ~^arista
+  gather_facts: no
+
+  tasks:
+  - name: harvest Arista Facts
+    eos_facts:
+    when: ansible_network_os == 'eos'
+
+
+  - name: Push to the local system -- by special tag request only
+    copy:
+      content: "{{ ansible_facts | to_no_json }}"
+      dest: "/home/student/Ansible-Class/{{ inventory_hostname}}.txt"
+
+    tags:
+      - never
+      - grabfacts
+
+  - name: Getting at network interfaces
+    debug:
+      var: ansible_facts.net_interfaces
