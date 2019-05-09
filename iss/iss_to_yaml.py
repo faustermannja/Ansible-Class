@@ -9,7 +9,7 @@ def main():
     ## create a blob of data to work with
     hitchhikers = [{'name' : 'Zaphod Beeblebox', "species": 'Betelgeusian'}, \
             {'name': 'Arthur Dent', "species": 'Human'}]
-
+    print(yaml.dump(hitchhikers))
     ## display our python data (a list containing two dictionaries)
     print(hitchhikers)
 
