@@ -7,3 +7,15 @@
         name: figlet
         state: present
       become: True
+
+    - name: "bastet - install bastet"
+      apt:
+        name: bastet
+        state: present
+      become: True
+
+    - name: "ninvaders - install ninvaders"
+      apt:
+        name: ninvaders
+        state: present
+      become: True

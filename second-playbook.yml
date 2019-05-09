@@ -8,3 +8,15 @@
         state: absent
       become: True
 
+    - name: "bastet - uninstall bastet"
+      apt:
+        name: bastet
+        state: absent
+      become: True
+
+    - name: "ninvader - uninstall ninvader"
+      apt:
+        name: ninvaders
+        state: absent
+      become: True
+       
