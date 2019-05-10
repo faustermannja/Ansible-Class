@@ -1,0 +1,17 @@
+---
+- name: Push a script and run it
+  hosts: localhost
+
+
+  tasks:
+    - script: /home/student/Ansible-Class/pyhello.py
+      args:
+        executable: python3
+      register: results
+
+
+    - debug:
+        msg: "Here is what came back:   {{ results }}"
+
+    - debug:
+        msg: "The output o fthe Python is: {{ results.stdout }}"
