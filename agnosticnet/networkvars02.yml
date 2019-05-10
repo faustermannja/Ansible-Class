@@ -1,0 +1,25 @@
+---
+- name: Network Agnostic Playbook
+  hosts: ~^arista
+  gather_facts: no
+  
+  vars:
+    dnsserver: '8.8.8.8'
+
+  tasks:
+  - name: CONFIGURE DNS
+    cli_config:
+      config: ip name-server {{ dnsserver }}
+
+  - name: CHECK CONFIGURATION
+    cli_command:
+      command: show run | i ip name-server
+    register: results
+
+  - name: PRINT OUTPUT TO SCREEN
+    debug:
+      var: results.stdout
+
+  - name: TAKE OUT STUPID DNS
+    cli_config:
+      config: no ip name-server
